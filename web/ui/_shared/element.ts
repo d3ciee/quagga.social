@@ -1,5 +1,6 @@
 import { CSSResultGroup, LitElement, unsafeCSS } from "lit";
-import style from "../../../dist/css/tailwind.css?inline";
+//@ts-ignore
+import style from "../../../dist/css/styles.css?inline";
 
 const Element = () =>
   class extends LitElement {
