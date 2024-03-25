@@ -3,7 +3,7 @@ import path from "path";
 
 export default defineConfig({
   build: {
-    outDir: path.resolve(__dirname, "dist"),
+    outDir: path.resolve(__dirname, "dist/js"),
     rollupOptions: {
       input: {
         main: path.resolve(__dirname, "web/ui/index.ts"),

@@ -1,19 +1,14 @@
-import { html, css, LitElement } from "lit";
+import { html, css } from "lit";
 
 import { customElement, property } from "lit/decorators.js";
+import Element from "./_shared/element";
 
 @customElement("simple-greeting")
-export class SimpleGreeting extends LitElement {
-  static styles = css`
-    p {
-      color: blue;
-    }
-  `;
-
+export class SimpleGreeting extends Element() {
   @property()
   name = "Somebody";
 
   render() {
-    return html`<p>Hello, ${this.name}!</p>`;
+    return html`<p class="bg-green-500">Helolkl, ${this.name}!</p>`;
   }
 }
