@@ -11,7 +11,20 @@
           continue.
         </p>
       </div>
-      <div class="grid gap-4">
+      
+      <form novalidate=false action="/" class="grid gap-4">
+        <div class="grid gap-2">
+          <qg-label for="username">Username</qg-label>
+          <qg-input
+          id="username"
+          type="text"
+          placeholder="Username"
+          required
+          ></qg-input>
+          <p class="text-xs text-secondary-foreground italic">
+            You can use letters, numbers, and underscores
+          </p>
+        </div>
         <div class="grid gap-2">
           <qg-label for="email">Email</qg-label>
           <qg-input
@@ -25,14 +38,15 @@
           <div class="flex items-center">
             <qg-label for="password">Password</qg-label>
           </div>
-          <qg-input id="password" type="password" required />
+          <qg-input id="password" placeholder="••••••••" type="password" required />
         </div>
         <qg-button type="submit" class="w-full"> Continue </qg-button>
-      </div>
+      </form>
       <div class="mt-4 text-left text-sm">
         Already have an account?
         <a href="#" class="underline"> Sign in </a>
       </div>
+
     </div>
   </div>
 </div>

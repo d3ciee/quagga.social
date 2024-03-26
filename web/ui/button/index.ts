@@ -6,12 +6,12 @@ import { customElement, property } from "lit/decorators.js";
 import prefixTagName from "../_helpers/prefix_tag_name";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center border-b-4 active:border-b active:translate-y-0.5 border-x whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+  "inline-flex items-center justify-center border-b-4 active:border-b duration-75 active:translate-y-[2px] border-x whitespace-nowrap rounded-md text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
   {
     variants: {
       variant: {
         default:
-          "shadow-sm transition-all bg-primary border-b-4 border-[#563211] active:shadow-none text-primary-foreground",
+          "shadow-sm transition-shadow hover:shadow-md bg-primary border-[#563211] active:shadow-none text-primary-foreground",
         destructive:
           "bg-destructive text-destructive-foreground hover:bg-destructive/90",
         outline:
@@ -39,12 +39,14 @@ const buttonVariants = cva(
 class Button extends Element() {
   @property()
   variant: VariantProps<typeof buttonVariants>["variant"] = "default";
-
+  @property()
+  type: HTMLButtonElement["type"] = "button";
   @property()
   size: VariantProps<typeof buttonVariants>["size"];
 
   render() {
     return html`<button
+      type=${this.type}
       style=${this.variant == "default"
         ? "background-image:var(--pattern-primary);background-size: cover"
         : ""}
@@ -56,7 +58,7 @@ class Button extends Element() {
         })
       )}"
     >
-      <slot></slot>
+      ${this.slotElements}
     </button>`;
   }
 }
