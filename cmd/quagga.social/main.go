@@ -3,13 +3,15 @@ package main
 import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/template/html/v2"
+	webHandler "quagga.social/api/handler/web_handler"
 )
 
 func main() {
 	engine := html.New("web/template", ".html")
 
 	app := fiber.New(fiber.Config{
-		Views: engine,
+		Views:       engine,
+		ViewsLayout: "layout/main",
 	})
 
 	app.Static(
@@ -19,6 +21,8 @@ func main() {
 			MaxAge: 0,
 		},
 	)
+
+	webHandler.SetupRoutes(app)
 
 	app.Get("/", func(c *fiber.Ctx) error {
 		return c.Render("page/index", fiber.Map{})

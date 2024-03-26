@@ -1,18 +1,6 @@
-import { html, css } from "lit";
-
-import { property } from "lit/decorators.js";
-import Element from "./_shared/element";
-import customElement from "./_decorators/custom_element";
 import Button from "./button";
+import Input from "./input";
+import Label from "./label";
+import Logo from "./logo";
 
-@customElement("simple-greeting")
-export class SimpleGreeting extends Element() {
-  @property()
-  name = "Somebody";
-
-  render() {
-    return html`<p class="bg-green-500">Helolkl, ${this.name}!</p>`;
-  }
-}
-
-export { Button };
+export { Button, Input, Label, Logo };

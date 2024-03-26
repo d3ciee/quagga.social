@@ -1,16 +1,17 @@
 import { html } from "lit";
-// import customElement from "../_decorators/custom_element";
-import Element from "../_shared/element";
+import Element from "../_common/element";
 import { cva, type VariantProps } from "class-variance-authority";
 import { twMerge } from "tailwind-merge";
-import { property, customElement } from "lit/decorators.js";
+import { customElement, property } from "lit/decorators.js";
+import prefixTagName from "../_helpers/prefix_tag_name";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+  "inline-flex items-center justify-center border-b-4 active:border-b active:translate-y-0.5 border-x whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/90",
+        default:
+          "shadow-sm transition-all bg-primary border-b-4 border-[#563211] active:shadow-none text-primary-foreground",
         destructive:
           "bg-destructive text-destructive-foreground hover:bg-destructive/90",
         outline:
@@ -34,16 +35,19 @@ const buttonVariants = cva(
   }
 );
 
-@customElement("qg-button")
+@customElement(prefixTagName("button"))
 class Button extends Element() {
   @property()
-  variant: VariantProps<typeof buttonVariants>["variant"];
+  variant: VariantProps<typeof buttonVariants>["variant"] = "default";
 
   @property()
   size: VariantProps<typeof buttonVariants>["size"];
 
   render() {
     return html`<button
+      style=${this.variant == "default"
+        ? "background-image:var(--pattern-primary);background-size: cover"
+        : ""}
       class="${twMerge(
         buttonVariants({
           variant: this.variant,
@@ -52,7 +56,7 @@ class Button extends Element() {
         })
       )}"
     >
-      yaris to urus ${this.children}
+      <slot></slot>
     </button>`;
   }
 }
