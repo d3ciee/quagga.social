@@ -1,0 +1,47 @@
+<div class="grid gap-2 text-center">
+    <h1 class="text-3xl text-left font-bold">
+      Check your e-mail
+    </h1>
+    <div class="space-y-2">
+        <p class="text-left text-muted-foreground w-full">
+            Your account has been created succesfully!🎉
+        </p>
+        <p class="text-left text-muted-foreground w-full">
+          Just click the link we sent <b class="font-medium">({{.Email}})</b> to verify your account.  We'll wait right here. 
+        </p>
+        <p class="text-left text-muted-foreground font-medium w-full">
+            Did not receive any mail?  Check your spam folder, or request another one.
+        </p>
+    </div>
+  </div>
+  
+  <form action="/" class="grid gap-2">
+      <qg-input
+        id="email"
+        type="email"
+        placeholder="Email"
+        required
+        ></qg-input>
+    <qg-button type="submit" id="submit-btn" disabled class="w-full">  </qg-button>
+  </form>
+  <script>
+    let ResendAfter = Number("{{.ResendAfter}}");
+    const resendButton = document.getElementById("submit-btn");
+
+    resendButton.setAttribute("disabled", "true")
+
+    let interval = setInterval(() => {
+        ResendAfter--;
+        resendButton.innerText = `Resend confirmation link (${ResendAfter})`;
+        if(ResendAfter <= 0) {
+            clearInterval(interval)
+            resendButton.disabled = false;
+            resendButton.setAttribute("disabled", "false")
+            resendButton.innerText = "Resend confirmation link"
+            return;
+        }
+    }, ResendAfter *10);
+
+  </script>
+  
+

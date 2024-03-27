@@ -43,10 +43,15 @@ class Button extends Element() {
   type: HTMLButtonElement["type"] = "button";
   @property()
   size: VariantProps<typeof buttonVariants>["size"];
+  @property()
+  disabled: boolean = false;
 
+  
   render() {
+    console.log(this.disabled);
     return html`<button
       type=${this.type}
+      ?disabled=${this.disabled}
       style=${this.variant == "default"
         ? "background-image:var(--pattern-primary);background-size: cover"
         : ""}
@@ -58,7 +63,7 @@ class Button extends Element() {
         })
       )}"
     >
-      ${this.slotElements}
+         <slot/>
     </button>`;
   }
 }

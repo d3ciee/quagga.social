@@ -1,0 +1,65 @@
+<div class="w-full h-full lg:grid lg:min-h-[600px] xl:min-h-[800px]">
+    <div class="flex items-center justify-center py-12 px-4">
+        <div class="mx-auto grid max-w-md w-full gap-6">
+            <qg-logo></qg-logo>
+            <div class="relative flex  justify-between mt-8">
+                <div class="w-full h-0.5 bg-neutral-400 absolute left-0 top-3"></div>
+                <div id="progress-bar" class="h-0.5 bg-primary absolute left-0 top-3"></div>
+
+                <div class="flex gap-2 flex-col">
+                    <span id="progress-create-acct">
+                    </span>
+                    <label for="progress-create-acct">Create account</label>
+                </div>
+                <div class="flex flex-col gap-2 items-center">
+                    <span id="progress-confirm-email">
+                    </span>
+                    <label for="progress-confirm-email">Confirm email</label>
+                </div>
+                <div class="flex flex-col gap-2 items-end">
+                    <span id="progress-add-details">
+                    </span>
+                    <label for="progress-add-details">Add more details</label>
+                </div>
+                <script defer>
+                    let stage = Number("{{.Step}}");
+                    const steps = ["progress-create-acct","progress-confirm-email","progress-add-details"]
+                    const progressBar = document.getElementById("progress-bar");
+
+
+                    const ProgressStyleMap = new Map([
+                        ["done", "h-6 w-6 bg-primary z-10 rounded-full flex items-center justify-center"],
+                        ["in-progress", "h-6 w-6 z-10 bg-background after:content-[''] after:h-3 after:w-3 after:bg-primary after:rounded-full flex items-center justify-center rounded-full border-2 border-primary"],
+                        ["not-done", "h-6 w-6 z-10 bg-background rounded-full border-2 border-neutral-400"]
+                    ])
+                    const indicators = ["progress-create-acct", "progress-confirm-email","progress-add-details"].map((s)=>document.getElementById(s)) 
+
+                    switch (stage) {
+                        case 1:
+                            indicators[0].className = ProgressStyleMap.get("in-progress")
+                            indicators[1].className = ProgressStyleMap.get("not-done")
+                            indicators[2].className = ProgressStyleMap.get("not-done")    
+                            break;
+                        case 2:
+                            indicators[0].innerHTML = '<i data-lucide="check" class="h-4 w-4 text-white"></i>'
+                            indicators[0].className = ProgressStyleMap.get("done")
+                            indicators[1].className = ProgressStyleMap.get("in-progress")
+                            indicators[2].className = ProgressStyleMap.get("not-done")    
+                            progressBar.classList.add("w-1/2")
+                            break;
+                        case 3:
+                            indicators[0].innerHTML = '<i data-lucide="check" class="h-4 w-4 text-white"></i>'
+                            indicators[1].innerHTML = '<i data-lucide="check" class="h-4 w-4 text-white"></i>'
+                            indicators[0].className = ProgressStyleMap.get("done")
+                            indicators[1].className = ProgressStyleMap.get("done")    
+                            indicators[2].className = ProgressStyleMap.get("in-progress")
+                            progressBar.classList.add("w-full")
+                            break;
+                    }
+                </script>
+            </div>
+            {{embed}}
+
+        </div>
+    </div>
+</div>

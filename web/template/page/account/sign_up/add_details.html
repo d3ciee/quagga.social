@@ -1,0 +1,33 @@
+<div class="grid gap-2 text-center">
+    <h1 class="text-3xl text-left font-bold">
+      Check your e-mail
+    </h1>
+    <div>
+        <p class="text-left text-muted-foreground w-full">
+            Your account has been created succesfully!🎉
+        </p>
+        <p class="text-left text-muted-foreground w-full">
+          Just click the link we sent (<b class="font-medium">{{.Email}}</b>) to verify 
+        </p>
+        <p class="text-left text-muted-foreground font-medium w-full">
+            Did not receive any mail?  Check your spam folder, or request another one.
+        </p>
+    </div>
+  </div>
+  
+  <form action="/" class="grid gap-2">
+
+      <qg-input
+        id="email"
+        type="email"
+        placeholder="Email"
+        required
+        ></qg-input>
+     
+    <qg-button type="submit" class="w-full mt-4"> Continue </qg-button>
+  </form>
+  <div class="mt-4 text-left text-sm">
+    Already have an account?
+    <a href="#" class="underline"> Sign in </a>
+  </div>
+
