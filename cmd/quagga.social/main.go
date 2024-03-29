@@ -24,9 +24,5 @@ func main() {
 
 	webHandler.SetupRoutes(app)
 
-	app.Get("/", func(c *fiber.Ctx) error {
-		return c.Render("page/index", fiber.Map{})
-	})
-
 	app.Listen(":3000")
 }

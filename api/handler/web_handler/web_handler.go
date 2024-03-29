@@ -10,4 +10,5 @@ type meta struct {
 
 func SetupRoutes(app *fiber.App) {
 	setupAccountRoutes(app)
+	setupHomepageRoutes(app)
 }
