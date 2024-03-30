@@ -22,6 +22,15 @@ func main() {
 		},
 	)
 
+	// TODO: Remove the lucide icon file when wifi is now working
+	app.Static(
+		"/public",
+		"public",
+		fiber.Static{
+			MaxAge: 0,
+		},
+	)
+
 	webHandler.SetupRoutes(app)
 
 	app.Listen(":3000")

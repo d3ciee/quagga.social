@@ -1,0 +1,44 @@
+<div class="h-screen overflow-hidden flex w-full ">
+    <aside class="w-64 min-w-64 p-2 h-full flex flex-col space-y-2 border-solid border border-r">
+        <div class="relative">
+            <i data-lucide="search" class="h-5 w-5 left-3 top-[50%] -translate-y-[50%] absolute opacity-60"></i>
+            <qg-input innerClass="w-full bg-secondary pl-12" placeholder="Search Quagga" />
+        </div>
+        <nav class="text-sm [&_a]:no-underline *:text-foreground [&_.chosen]:font-medium [&_a]:font-normal [&_.chosen]:from-muted [&_.chosen]:bg-muted [&_.chosen]:border-l-4 [&_.chosen]:border-primary ">
+            <a hx-boost="true" hx-target="#main-content" href="/" class='{{ if eq .Page "home" }} chosen {{end}} h-9 p-2 rounded-md transition-[border] bg-secondary flex cursor-pointer items-center'>
+                <i data-lucide="home" class=" h-5 w-5 ml-1 mr-2"></i>
+                Home
+            </a>
+            <a hx-boost="true" hx-target="#main-content" href="/explore" class='{{ if eq .Page "explore" }} chosen {{end}} h-9 p-2 rounded-md transition-[border] flex items-center cursor-pointer'>
+                <i data-lucide="telescope" class="h-5 w-5 ml-1 mr-2 opacity-80"></i>
+                Explore
+            </a>
+        </nav>
+        <hr class="border-border"/>
+        <nav class="flex-1">
+            <button class="text-xs flex text-foreground-secondary font-medium text-left w-full">
+                YOUR COMMUNITIES
+                <i data-lucide="chevron-down" class="h-4 w-4 ml-auto opacity-80"></i>
+            </button>
+            <ul class="mb-2">
+                <li class="flex p-2 items-center text-sm "> 
+                    <span class="h-6 w-6 flex items-center justify-center rounded-sm bg-secondary mr-2">
+                        <i data-lucide="plus" class="h-4 w-4 opacity-80"></i>
+                    </span>
+                    <span>
+                        Create community
+                    </span>
+                </li>
+            </ul>
+        </nav>
+        <div class="flex flex-col gap-2">
+            <p class="text-sm !text-muted-foreground">
+                <b>quagga.social </b> <a>About</a> <a>Invite a friend</a> <a>Privacy policy</a>
+                <a>Report a bug</a>
+            </p>
+        </div>
+    </aside>
+    <main id="main-content" class="w-full h-full">
+    {{embed}}
+    </main>
+</div>
