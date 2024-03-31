@@ -5,9 +5,6 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
-  '@stencil/core':
-    specifier: ^4.13.0
-    version: 4.13.0
   class-variance-authority:
     specifier: ^0.7.0
     version: 0.7.0
@@ -19,6 +16,9 @@ dependencies:
     version: 2.2.2
 
 devDependencies:
+  '@stencil/core':
+    specifier: ^4.7.0
+    version: 4.13.0
   '@types/node':
     specifier: ^20.11.30
     version: 20.11.30
@@ -438,7 +438,7 @@ packages:
     resolution: {integrity: sha512-gg+gtBWekQ08mDja8GVAUHNu+rrFhQaKZDvfhnS3l/5JbYiJddTimuDPPhuc0sR0JZL1iRdJTJSa+JbvmnQ1cQ==}
     engines: {node: '>=16.0.0', npm: '>=7.10.0'}
     hasBin: true
-    dev: false
+    dev: true
 
   /@types/estree@1.0.5:
     resolution: {integrity: sha512-/kYRxGDLWzHOB7q+wtSUQlFrtcdUccpfy+X+9iMBpHK8QLLhx2wIPYuS5DYtR9Wa/YlZAbIovy7qVdB1Aq6Lyw==}

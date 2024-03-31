@@ -17,3 +17,14 @@ declare global {
         "qg-tabs-trigger":TabTrigger;
     }
 }
+
+export class Button2 extends HTMLButtonElement{
+    constructor(){
+        super()
+        this.innerText="hi"
+    }
+    connectedCallback(){
+        
+    }
+}
+customElements.define("button-2", Button2)

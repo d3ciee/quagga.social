@@ -1,7 +1,5 @@
 import { html } from "lit";
 import Element from "../_common/element";
-import { cva, type VariantProps } from "class-variance-authority";
-import { twMerge } from "tailwind-merge";
 import { customElement, property } from "lit/decorators.js";
 import prefixTagName from "../_helpers/prefix_tag_name";
 

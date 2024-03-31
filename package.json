@@ -3,13 +3,23 @@
   "version": "1.0.0",
   "description": "",
   "type": "module",
+
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.js",
+  "types": "dist/types/index.d.ts",
+  "collection": "dist/collection/collection-manifest.json",
+  "collection:main": "dist/collection/index.js",
+
   "scripts": {
     "tailwind:watch": "npx tailwindcss -i ./public/css/styles.css -o ./dist/css/styles.css --watch",
     "tailwind:build": "npx tailwindcss -i ./public/css/styles.css -o ./dist/css/styles.css",
     "vite:watch": "vite build --watch",
     "vite:build": "vite build",
     "watch": "pnpm run tailwind:watch && pnpm run vite:watch",
-    "build": "pnpm run tailwind:build && pnpm run vite:build"
+    "build": "pnpm run tailwind:build && pnpm run vite:build",
+    "stencil:build": "stencil build",
+    "stencil:watch": "stencil build --dev --watch --serve",
+    "stencil:generate": "stencil generate"
   },
   "keywords": [],
   "author": "d3ciee",
@@ -17,10 +27,10 @@
   "devDependencies": {
     "@types/node": "^20.11.30",
     "tailwindcss": "^3.4.1",
-    "vite": "^5.2.6"
+    "vite": "^5.2.6",
+    "@stencil/core": "^4.7.0"
   },
   "dependencies": {
-    "@stencil/core": "^4.13.0",
     "class-variance-authority": "^0.7.0",
     "lit": "^3.1.2",
     "tailwind-merge": "^2.2.2"
