@@ -3,38 +3,60 @@
           Let's get you set up on quagga.social
         </h1>
         <p class="text-left text-muted-foreground w-full">
-          First things first, enter your email, username and a password to
+          First things first, enter your email, a username and a password to
           continue.
         </p>
       </div>
-      
-      <form novalidate=false action="/" class="grid gap-2">
-          <div class="grid gap-1">
+      <form id="create-acc-form"  action="/" class="grid gap-2 group">
             <qg-input
             id="username"
             type="text"
             placeholder="Username"
+            description="You can use letters, numbers, and underscores"
+            min=2
+            max=20
+            pattern="[A-Za-z0-9_]{2,20}"
+            error="Usernames should only contain letters, numbers, and underscores and be between 2-20 characters in length"
             required
             ></qg-input>
-            <p class="text-xs ml-2 text-secondary-foreground italic">
-              You can use letters, numbers, and underscores
-            </p>
-          </div>
           <qg-input
             id="email"
             type="email"
             placeholder="Email"
+            error="Please enter a valid email address"
             required
             ></qg-input>
           <qg-input 
             id="password" 
+            min=8
+            error="Password should be at least 8 characters"
             placeholder="Password" 
             type="password" 
             ></qg-input>
-        <qg-button type="submit" class="w-full mt-4"> Continue </qg-button>
+            <div class="mt-6 flex items-center space-x-2 flex-row-reverse">
+              <qg-checkbox id="confirm-privacy"></qg-checkbox>
+              <qg-label class="ml-1 font-normal" for="confirm-privacy">I have read and agree to the <a href="">privacy policy</a></qg-label>
+            </div>
+
+        <qg-button
+            disabled
+            className="group-invalid:pointer-events-none group-invalid:opacity-50" 
+            type="submit" 
+            id="form-submit"
+            class="w-full mt-1"
+            > Continue </qg-button>
       </form>
       <div class="mt-4 text-left text-sm">
         Already have an account?
         <a href="#" class="underline"> Sign in </a>
       </div>
 
+      <script>
+        const form = document.getElementById("create-acc-form");
+        const formButton = document.getElementById("form-submit")
+        form.addEventListener("change", ()=>{
+          console.log(form.checkValidity())
+          formButton.disabled = !form.checkValidity()
+        })
+      </script>
+      

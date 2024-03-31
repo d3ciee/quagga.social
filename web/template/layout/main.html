@@ -3,14 +3,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{{ .Meta.Title }} | Quagga</title>
-    <script src="/public/js/main.js"></script>
     <link rel="stylesheet" href="/public/css/styles.css"></link>
     <!-- <script src="https://unpkg.com/lucide@latest"></script> -->
     <script src="/public/lucide.min.js"></script>
     <script src="/public/htmx.min.js"></script>
 
-    <script type="module" src="/public/build/quagga.esm.js"></script>
-    <script nomodule src="/puclic/build/quagga.js"></script>
+    <script type="module" src="/public/js/build/quagga.esm.js"></script>
+    <script nomodule src="/puclic/js/build/quagga.js"></script>
 
     <!-- <script
       src="https://unpkg.com/htmx.org@1.9.11"
@@ -18,7 +17,6 @@
       crossorigin="anonymous"
       ></script> -->
   </head>
-  <my-component>runnin</my-component>
   <body>
     {{embed}}
   </body>

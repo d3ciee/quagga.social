@@ -1,9 +1,10 @@
 import type { Config } from "tailwindcss";
+import c from "tailwindcss/colors"
 import { fontFamily } from "tailwindcss/defaultTheme";
 
 export default {
   darkMode: ["class"],
-  content: ["./web/**/*.{html,js,ts}"],
+  content: ["./web/**/*.{html,js,ts,tsx}"],
   theme: {
     container: {
       center: true,
@@ -30,6 +31,9 @@ export default {
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
           foreground: "hsl(var(--destructive-foreground))",
+        },
+        success:{
+          DEFAULT:c.green[400]
         },
         muted: {
           DEFAULT: "hsl(var(--muted))",

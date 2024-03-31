@@ -2,8 +2,8 @@
     <aside class="w-64 min-w-64 p-2 h-full flex flex-col space-y-2 border-solid border border-r">
         <div class="relative">
             <i data-lucide="search" class="h-5 w-5 left-3 top-[50%] -translate-y-[50%] absolute opacity-60"></i>
-            <qg-input innerClass="w-full bg-secondary pl-12" placeholder="Search Quagga" />
-        </div>
+            <qg-input className="w-full bg-secondary pl-12" placeholder="Search Quagga" />
+        </div> 
         <nav class="text-sm [&_a]:no-underline *:text-foreground [&_.chosen]:font-medium [&_a]:font-normal [&_.chosen]:from-muted [&_.chosen]:bg-muted [&_.chosen]:border-l-4 [&_.chosen]:border-primary ">
             <a hx-boost="true" hx-target="#main-content" href="/" class='{{ if eq .Page "home" }} chosen {{end}} h-9 p-2 rounded-md transition-[border] bg-secondary flex cursor-pointer items-center'>
                 <i data-lucide="home" class=" h-5 w-5 ml-1 mr-2"></i>

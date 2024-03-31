@@ -6,38 +6,128 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
-    interface MyComponent {
-        "first"?: string;
-        "last"?: string;
-        "middle"?: string;
+    interface QgButton {
+        "className": string;
+        "disabled": boolean;
+        "id": string;
+        "size": any;
+        "type": HTMLButtonElement["type"];
+        "variant": any;
+    }
+    interface QgCheckbox {
+        "className": string;
+        "id": string;
+    }
+    interface QgInput {
+        "className": string;
+        "description": string;
+        "error": string;
+        "max": number;
+        "min": number;
+        "name": string;
+        "pattern": string;
+        "placeholder": string;
+        "required": boolean;
+        "type": HTMLInputElement["type"];
+    }
+    interface QgLabel {
+        "class": string;
+        "for"?: string;
+    }
+    interface QgLogo {
+        "class"?: string;
+        "size": "full" | "icon";
     }
 }
 declare global {
-    interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
+    interface HTMLQgButtonElement extends Components.QgButton, HTMLStencilElement {
     }
-    var HTMLMyComponentElement: {
-        prototype: HTMLMyComponentElement;
-        new (): HTMLMyComponentElement;
+    var HTMLQgButtonElement: {
+        prototype: HTMLQgButtonElement;
+        new (): HTMLQgButtonElement;
+    };
+    interface HTMLQgCheckboxElement extends Components.QgCheckbox, HTMLStencilElement {
+    }
+    var HTMLQgCheckboxElement: {
+        prototype: HTMLQgCheckboxElement;
+        new (): HTMLQgCheckboxElement;
+    };
+    interface HTMLQgInputElement extends Components.QgInput, HTMLStencilElement {
+    }
+    var HTMLQgInputElement: {
+        prototype: HTMLQgInputElement;
+        new (): HTMLQgInputElement;
+    };
+    interface HTMLQgLabelElement extends Components.QgLabel, HTMLStencilElement {
+    }
+    var HTMLQgLabelElement: {
+        prototype: HTMLQgLabelElement;
+        new (): HTMLQgLabelElement;
+    };
+    interface HTMLQgLogoElement extends Components.QgLogo, HTMLStencilElement {
+    }
+    var HTMLQgLogoElement: {
+        prototype: HTMLQgLogoElement;
+        new (): HTMLQgLogoElement;
     };
     interface HTMLElementTagNameMap {
-        "my-component": HTMLMyComponentElement;
+        "qg-button": HTMLQgButtonElement;
+        "qg-checkbox": HTMLQgCheckboxElement;
+        "qg-input": HTMLQgInputElement;
+        "qg-label": HTMLQgLabelElement;
+        "qg-logo": HTMLQgLogoElement;
     }
 }
 declare namespace LocalJSX {
-    interface MyComponent {
-        "first"?: string;
-        "last"?: string;
-        "middle"?: string;
+    interface QgButton {
+        "className"?: string;
+        "disabled"?: boolean;
+        "id"?: string;
+        "size"?: any;
+        "type"?: HTMLButtonElement["type"];
+        "variant"?: any;
+    }
+    interface QgCheckbox {
+        "className"?: string;
+        "id"?: string;
+    }
+    interface QgInput {
+        "className"?: string;
+        "description"?: string;
+        "error"?: string;
+        "max"?: number;
+        "min"?: number;
+        "name"?: string;
+        "pattern"?: string;
+        "placeholder"?: string;
+        "required"?: boolean;
+        "type"?: HTMLInputElement["type"];
+    }
+    interface QgLabel {
+        "class"?: string;
+        "for"?: string;
+    }
+    interface QgLogo {
+        "class"?: string;
+        "size"?: "full" | "icon";
     }
     interface IntrinsicElements {
-        "my-component": MyComponent;
+        "qg-button": QgButton;
+        "qg-checkbox": QgCheckbox;
+        "qg-input": QgInput;
+        "qg-label": QgLabel;
+        "qg-logo": QgLogo;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "qg-button": LocalJSX.QgButton & JSXBase.HTMLAttributes<HTMLQgButtonElement>;
+            "qg-checkbox": LocalJSX.QgCheckbox & JSXBase.HTMLAttributes<HTMLQgCheckboxElement>;
+            "qg-input": LocalJSX.QgInput & JSXBase.HTMLAttributes<HTMLQgInputElement>;
+            "qg-label": LocalJSX.QgLabel & JSXBase.HTMLAttributes<HTMLQgLabelElement>;
+            "qg-logo": LocalJSX.QgLogo & JSXBase.HTMLAttributes<HTMLQgLogoElement>;
         }
     }
 }
