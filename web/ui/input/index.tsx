@@ -1,11 +1,18 @@
 import { twMerge } from "tailwind-merge";
 import { Component, h, Prop } from "@stencil/core";
 
+
+
+abstract class BaseComponent{
+
+}
+
 @Component({
   tag: "qg-input",
   shadow: false,
+  formAssociated: true,
 })
-export class Input{
+export class Input extends BaseComponent{
   @Prop() 
   className:string;
   @Prop()
@@ -29,7 +36,7 @@ export class Input{
 
   render() {
     return (
-      <div class="w-full space-y-1">
+      <div class="w-full space-y-1 relative">
         <input
           autoComplete="off"
           type={this.type as any}
@@ -46,6 +53,7 @@ export class Input{
             this.className
           )}
         />
+
         {
         this.description && 
           <span 

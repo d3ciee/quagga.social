@@ -33,7 +33,7 @@
             placeholder="Password" 
             type="password" 
             ></qg-input>
-            <div class="mt-6 flex items-center space-x-2 flex-row-reverse">
+            <div class="mt-6 flex items-center space-x-2 flex-row">
               <qg-checkbox id="confirm-privacy"></qg-checkbox>
               <qg-label class="ml-1 font-normal" for="confirm-privacy">I have read and agree to the <a href="">privacy policy</a></qg-label>
             </div>
@@ -51,12 +51,28 @@
         <a href="#" class="underline"> Sign in </a>
       </div>
 
-      <script>
-        const form = document.getElementById("create-acc-form");
+      <script >
+         document.getElementById("username").addEventListener("focus",()=>{
+            usernameField.setAttribute("error", "Username is already taken")
+            usernameField.setCustomValidity("Username is already taken")
+
+            console.log("changed")
+          })
+        document.getElementById("username").addEventListener("load",()=>{
+          console.log("cool")
+          document.querySelector("#username input").addEventListener("change",()=>{
+            usernameField.setAttribute("error", "Username is already taken")
+            usernameField.setCustomValidity("Username is already taken")
+
+            console.log("changed")
+          })
+        })
+         
         const formButton = document.getElementById("form-submit")
+        const form = document.getElementById("create-acc-form")
         form.addEventListener("change", ()=>{
-          console.log(form.checkValidity())
           formButton.disabled = !form.checkValidity()
         })
+        
       </script>
       

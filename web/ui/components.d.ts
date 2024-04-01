@@ -18,18 +18,6 @@ export namespace Components {
         "className": string;
         "id": string;
     }
-    interface QgInput {
-        "className": string;
-        "description": string;
-        "error": string;
-        "max": number;
-        "min": number;
-        "name": string;
-        "pattern": string;
-        "placeholder": string;
-        "required": boolean;
-        "type": HTMLInputElement["type"];
-    }
     interface QgLabel {
         "class": string;
         "for"?: string;
@@ -52,12 +40,6 @@ declare global {
         prototype: HTMLQgCheckboxElement;
         new (): HTMLQgCheckboxElement;
     };
-    interface HTMLQgInputElement extends Components.QgInput, HTMLStencilElement {
-    }
-    var HTMLQgInputElement: {
-        prototype: HTMLQgInputElement;
-        new (): HTMLQgInputElement;
-    };
     interface HTMLQgLabelElement extends Components.QgLabel, HTMLStencilElement {
     }
     var HTMLQgLabelElement: {
@@ -73,7 +55,6 @@ declare global {
     interface HTMLElementTagNameMap {
         "qg-button": HTMLQgButtonElement;
         "qg-checkbox": HTMLQgCheckboxElement;
-        "qg-input": HTMLQgInputElement;
         "qg-label": HTMLQgLabelElement;
         "qg-logo": HTMLQgLogoElement;
     }
@@ -91,18 +72,6 @@ declare namespace LocalJSX {
         "className"?: string;
         "id"?: string;
     }
-    interface QgInput {
-        "className"?: string;
-        "description"?: string;
-        "error"?: string;
-        "max"?: number;
-        "min"?: number;
-        "name"?: string;
-        "pattern"?: string;
-        "placeholder"?: string;
-        "required"?: boolean;
-        "type"?: HTMLInputElement["type"];
-    }
     interface QgLabel {
         "class"?: string;
         "for"?: string;
@@ -114,7 +83,6 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "qg-button": QgButton;
         "qg-checkbox": QgCheckbox;
-        "qg-input": QgInput;
         "qg-label": QgLabel;
         "qg-logo": QgLogo;
     }
@@ -125,7 +93,6 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "qg-button": LocalJSX.QgButton & JSXBase.HTMLAttributes<HTMLQgButtonElement>;
             "qg-checkbox": LocalJSX.QgCheckbox & JSXBase.HTMLAttributes<HTMLQgCheckboxElement>;
-            "qg-input": LocalJSX.QgInput & JSXBase.HTMLAttributes<HTMLQgInputElement>;
             "qg-label": LocalJSX.QgLabel & JSXBase.HTMLAttributes<HTMLQgLabelElement>;
             "qg-logo": LocalJSX.QgLogo & JSXBase.HTMLAttributes<HTMLQgLogoElement>;
         }
