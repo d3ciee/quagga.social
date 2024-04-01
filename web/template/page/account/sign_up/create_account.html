@@ -1,78 +1,51 @@
-      <div class="grid gap-2 text-center">
-        <h1 class="text-3xl text-left font-bold">
-          Let's get you set up on quagga.social
-        </h1>
-        <p class="text-left text-muted-foreground w-full">
-          First things first, enter your email, a username and a password to
-          continue.
-        </p>
-      </div>
-      <form id="create-acc-form"  action="/" class="grid gap-2 group">
-            <qg-input
-            id="username"
-            type="text"
-            placeholder="Username"
-            description="You can use letters, numbers, and underscores"
-            min=2
-            max=20
-            pattern="[A-Za-z0-9_]{2,20}"
-            error="Usernames should only contain letters, numbers, and underscores and be between 2-20 characters in length"
-            required
-            ></qg-input>
-          <qg-input
-            id="email"
-            type="email"
-            placeholder="Email"
-            error="Please enter a valid email address"
-            required
-            ></qg-input>
-          <qg-input 
-            id="password" 
-            min=8
-            error="Password should be at least 8 characters"
-            placeholder="Password" 
-            type="password" 
-            ></qg-input>
-            <div class="mt-6 flex items-center space-x-2 flex-row">
-              <qg-checkbox id="confirm-privacy"></qg-checkbox>
-              <qg-label class="ml-1 font-normal" for="confirm-privacy">I have read and agree to the <a href="">privacy policy</a></qg-label>
-            </div>
+<div class="grid gap-2 text-center">
+  <h1 class="text-3xl text-left font-bold">
+    Let's get you set up on quagga.social
+  </h1>
+  <p class="text-left text-muted-foreground w-full">
+    First things first, enter your email, a username and a password to
+    continue.
+  </p>
+</div>
+<form autocomplete="off" id="create-acc-form" action="/" class="grid gap-2">
+  <div>
+    <input 
+    class="qg-input" id="username" type="text" placeholder="Username"
+       min=2 max=20 pattern="[A-Za-z0-9_]{2,20}"
+      required></input>
+    <p class="qg-label italic ml-2 mt-1">
+      You can use letters, numbers, and underscores
+    </p>
+  </div>
+  <input class="qg-input" id="email" type="email" placeholder="Email" error="Please enter a valid email address"
+    required></input>
+  <input class="qg-input" id="password" min=8 error="Password should be at least 8 characters" placeholder="Password"
+    type="password"></input>
+  <div class="mt-6 flex items-center space-x-2 flex-row">
+    <qg-checkbox id="confirm-privacy"></qg-checkbox>
+    <qg-label class="ml-1 font-normal" for="confirm-privacy">I have read and agree to the <a href="">privacy
+        policy</a></qg-label>
+  </div>
 
-        <qg-button
-            disabled
-            className="group-invalid:pointer-events-none group-invalid:opacity-50" 
-            type="submit" 
-            id="form-submit"
-            class="w-full mt-1"
-            > Continue </qg-button>
-      </form>
-      <div class="mt-4 text-left text-sm">
-        Already have an account?
-        <a href="#" class="underline"> Sign in </a>
-      </div>
+  <qg-button type="submit" id="form-submit" class="qg-button btn-primary btn-lg w-full mt-1"> Continue </qg-button>
+</form>
+<div class="mt-4 text-left text-sm">
+  Already have an account?
+  <a href="#" class="underline"> Sign in </a>
+</div>
 
-      <script >
-         document.getElementById("username").addEventListener("focus",()=>{
-            usernameField.setAttribute("error", "Username is already taken")
-            usernameField.setCustomValidity("Username is already taken")
+<script async="false">
+  window.addEventListener("load", () => {
 
-            console.log("changed")
-          })
-        document.getElementById("username").addEventListener("load",()=>{
-          console.log("cool")
-          document.querySelector("#username input").addEventListener("change",()=>{
-            usernameField.setAttribute("error", "Username is already taken")
-            usernameField.setCustomValidity("Username is already taken")
+    let usernameField = document.querySelector("#username input");
 
-            console.log("changed")
-          })
-        })
-         
-        const formButton = document.getElementById("form-submit")
-        const form = document.getElementById("create-acc-form")
-        form.addEventListener("change", ()=>{
-          formButton.disabled = !form.checkValidity()
-        })
-        
-      </script>
-      
+
+    document.querySelector("#username input").addEventListener("change", () => {
+      usernameField.setAttribute("error", "Username is already taken")
+      usernameField.setCustomValidity("Username is already taken")
+      usernameField.reportValidity();
+    })
+  })
+
+
+</script>

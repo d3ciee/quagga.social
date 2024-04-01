@@ -1,0 +1,49 @@
+@layer components {
+  .qg-input {
+    @apply flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 invalid:[&:not(:placeholder-shown):not(:focus)]:border-destructive valid:[&:not(:placeholder-shown):not(:focus)]:border-success
+  }
+
+  .qg-button {
+    @apply inline-flex w-full items-center justify-center border-b-4 active:border-b duration-75 active:translate-y-[2px] border-x whitespace-nowrap rounded-md text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50
+  }
+  .btn-primary {
+    @apply shadow-sm transition-shadow hover:shadow-md bg-primary border-[#563211] active:shadow-none text-primary-foreground
+  }
+  .btn-destructive {
+    @apply bg-destructive text-destructive-foreground hover:bg-destructive/90
+  }
+  .btn-outline {
+    @apply border border-input bg-background hover:bg-accent hover:text-accent-foreground
+  }
+  .btn-secondary {
+    @apply bg-secondary text-secondary-foreground hover:bg-secondary/80
+  }
+  .btn-ghost {
+    @apply hover:bg-accent hover:text-accent-foreground
+  }
+  .btn-link {
+    @apply text-primary underline-offset-4 hover:underline
+  }
+  .btn-sm {
+    @apply h-9 rounded-md px-3
+  }
+  .btn-lg {
+    @apply h-11 rounded-md px-8
+  }
+  .btn-icon {
+    @apply h-10 w-10
+  }
+
+  .qg-label{
+    @apply text-sm font-normal leading-none
+  }
+
+
+  .qg-checkbox{
+    @apply w-4 h-4 text-primary bg-transparent border rounded focus:ring-primary dark:focus:ring-primary focus:ring-2 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600
+  }
+
+  .qg-logo{
+    @apply h-14 w-14 rounded-md bg-primary 
+  }
+}

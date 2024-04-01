@@ -1,10 +1,9 @@
 import type { Config } from "tailwindcss";
 import c from "tailwindcss/colors"
-import { fontFamily } from "tailwindcss/defaultTheme";
 
 export default {
   darkMode: ["class"],
-  content: ["./web/**/*.{html,js,ts,tsx}"],
+  content: ["./web/**/*.{html,js,ts,tsx,css}"],
   theme: {
     container: {
       center: true,
