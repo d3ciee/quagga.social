@@ -1,8 +1,8 @@
-<div class="w-full h-full lg:grid lg:min-h-[600px] xl:min-h-[800px]">
+<div hx-indicator=".hx-indctr" class="w-full h-full lg:grid lg:min-h-[600px] xl:min-h-[800px]">
     <div class="flex items-center justify-center py-12 px-4">
         <div class="mx-auto grid max-w-md w-full gap-6">
-            <span class="qg-logo"></span>
-            <div class="relative flex  justify-between mt-8">
+            <span class="qg-logo hx-indctr"></span>
+            <div class="relative hx-indctr flex  justify-between mt-8">
                 <div class="w-full h-0.5 bg-neutral-400 absolute left-0 top-3"></div>
                 <div id="progress-bar" class="h-0.5 w-0 bg-primary absolute left-0 top-3"></div>
 
@@ -64,3 +64,8 @@
         </div>
     </div>
 </div>
+<style>
+    .htmx-request.hx-indctr {
+      opacity: 0.5;
+    }
+  </style>

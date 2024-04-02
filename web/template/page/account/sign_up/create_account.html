@@ -1,51 +1,64 @@
-<div class="grid gap-2 text-center">
-  <h1 class="text-3xl text-left font-bold">
-    Let's get you set up on quagga.social
-  </h1>
-  <p class="text-left text-muted-foreground w-full">
-    First things first, enter your email, a username and a password to
-    continue.
-  </p>
-</div>
-<form autocomplete="off" id="create-acc-form" action="/" class="grid gap-2">
+<form hx-post="/account/sign-up?step=create-account" hx-target="#error-message" hx-swap="innerHTML"
+  onsubmit="document.getElementById('error-message').innerText = '';" hx-ext="disable-element"
+  hx-disable-element="button, input" autocomplete="off" id="create-acc-form"
+  class="grid gap-2">
+
+  <div class="hx-indctr grid gap-2 text-center">
+    <h1 class="text-3xl text-left font-bold">
+      Let's get you set up on quagga.social
+    </h1>
+    <p class="text-left text-muted-foreground w-full">
+      First things first, enter your email, a username and a password to
+      continue.
+    </p>
+  </div>
+
+
   <div>
-    <input 
-    class="qg-input" id="username" type="text" placeholder="Username"
-       min=2 max=20 pattern="[A-Za-z0-9_]{2,20}"
+    <input class="qg-input" name="username" id="username" type="text" placeholder="Username" min=2 max=20 pattern="[A-Za-z0-9_]{2,20}"
       required></input>
     <p class="qg-label italic ml-2 mt-1">
       You can use letters, numbers, and underscores
     </p>
   </div>
-  <input class="qg-input" id="email" type="email" placeholder="Email" error="Please enter a valid email address"
+  <input class="qg-input" name="email" id="email" type="email" placeholder="Email"
     required></input>
-  <input class="qg-input" id="password" min=8 error="Password should be at least 8 characters" placeholder="Password"
+  <input class="qg-input"  name="password" id="password" min=8  placeholder="Password"
     type="password"></input>
   <div class="mt-6 flex items-center space-x-2 flex-row">
-    <qg-checkbox id="confirm-privacy"></qg-checkbox>
-    <qg-label class="ml-1 font-normal" for="confirm-privacy">I have read and agree to the <a href="">privacy
-        policy</a></qg-label>
+    <input type="checkbox" class="qg-checkbox" name="accept-pp-tos"></input>
+    <label class="ml-1 font-normal hx-indctr" for="accept-pp-tos">I have read and agree to the <a href="">privacy
+        policy</a></label>
   </div>
 
-  <qg-button type="submit" id="form-submit" class="qg-button btn-primary btn-lg w-full mt-1"> Continue </qg-button>
+  <button type="submit" id="form-submit" class="qg-button btn-primary btn-lg w-full mt-1"> Continue </button>
+  <p id="error-message" class="qg-label !text-destructive">
+
+  </p>
+  <div class="mt-4 text-left text-sm hx-indctr">
+    Already have an account?
+    <a href="#" class="underline"> Sign in </a>
+  </div>
+
 </form>
-<div class="mt-4 text-left text-sm">
-  Already have an account?
-  <a href="#" class="underline"> Sign in </a>
-</div>
+
 
 <script async="false">
-  window.addEventListener("load", () => {
-
-    let usernameField = document.querySelector("#username input");
-
-
-    document.querySelector("#username input").addEventListener("change", () => {
-      usernameField.setAttribute("error", "Username is already taken")
-      usernameField.setCustomValidity("Username is already taken")
-      usernameField.reportValidity();
-    })
-  })
-
-
+  const usernameField = document.getElementById("username")
+  usernameField.addEventListener("input", debounce(() => {
+    const uname = usernameField.value
+    if (uname.length < 2) return;
+    if (!usernameField.checkValidity()) return usernameField.setCustomValidity("Enter a valid username");
+    fetch(`/api/account/is-username-available/${uname}`)
+      .then(res => res.json())
+      .then(data => {
+        if (data.message !== "username is available") {
+          usernameField.setAttribute("error", "Username is already taken")
+          usernameField.setCustomValidity("Username is already taken")
+          usernameField.reportValidity();
+          return;
+        }
+        usernameField.setCustomValidity("")
+      })
+  }), 1000)
 </script>

@@ -1,6 +1,14 @@
 package webhandler
 
-import "github.com/gofiber/fiber/v2"
+import (
+	"fmt"
+	"time"
+
+	"github.com/gofiber/fiber/v2"
+	db "quagga.social/internal/db"
+	err "quagga.social/pkg/err"
+	"quagga.social/pkg/repository"
+)
 
 func setupAccountRoutes(app *fiber.App) {
 	accountGroup := app.Group("/account")
@@ -34,5 +42,33 @@ func setupAccountRoutes(app *fiber.App) {
 			"Step": 1,
 		}, "layout/main", "layout/sign_up")
 
+	})
+
+	accountGroup.Post("sign-up", func(c *fiber.Ctx) error {
+		step := c.Queries()["step"]
+		r := repository.UserRepository{DB: db.DB}
+
+		if step == "confirm-email" {
+		}
+		if step == "add-details" {
+		}
+		if step == "create-account" {
+			time.Sleep(3 * time.Second)
+
+			if c.FormValue("accept-pp-tos") != "on" {
+				return c.Status(200).SendString(err.ErrPPTOSRequired.Message)
+			}
+
+			fmt.Println(c.FormValue("username"))
+			_, e := r.Create(c.FormValue("username"), c.FormValue("email"), c.FormValue("password"), time.Now())
+
+			if e != nil {
+				return c.Status(200).SendString(e.Message)
+			}
+			c.Set("HX-Redirect", "true")
+			return c.Redirect("/account/sign-up?step=confirm-email")
+		}
+
+		return c.Redirect("/account/sign-up?step=create-account")
 	})
 }
