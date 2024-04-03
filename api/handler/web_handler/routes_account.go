@@ -65,7 +65,6 @@ func setupAccountRoutes(app *fiber.App) {
 			if e != nil {
 				return c.Status(200).SendString(e.Message)
 			}
-			c.Set("HX-Redirect", "true")
 			return c.Redirect("/account/sign-up?step=confirm-email")
 		}
 
